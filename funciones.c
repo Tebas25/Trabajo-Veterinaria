@@ -60,6 +60,7 @@ void ImprimirFactura(struct mascota ListaMascota[], struct servicio ListaServici
     char sn;
     int cantidadServicios=0;
     struct servicio Seleccionado[10];
+    float precioFinal=0;
 
     do{
         printf("Ingrese la identificación de su mascota para la factura: ");
@@ -93,7 +94,21 @@ void ImprimirFactura(struct mascota ListaMascota[], struct servicio ListaServici
         }else{
             printf("Factura llena!!!!");
         }   
-    } while (sn!='N'|| cantidadServicios<10);    
+    } while (sn!='N'|| cantidadServicios<10);
+
+    for (int t = 0; t < cantidadServicios; t++){
+        precioFinal=precioFinal+Seleccionado[t].precio;
+    }
+        
 
     printf("-----------FACTURA------------");
+    printf("Datos del cliente\n");
+    printf("%d %c",ListaMascota[posicionMascota].dueño, ListaMascota[posicionMascota].identificacion);
+    printf("Servicios a facturar\n");
+    for (int l = 0; l < cantidadServicios; l++){
+        printf("%s %s %f",Seleccionado[l].nombre, Seleccionado[l].descripcion, Seleccionado[l].precio);
+    }
+    printf("Total: %.2f",precioFinal);
+    
+    
 }
