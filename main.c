@@ -38,7 +38,7 @@ int main (int argc, char *argv[]) {
             break;
         
         default:
-            printf("Opción no válida. Ingrese otra opción\n");
+            printf("Opción no válida. Ingrese otra opción\n\n");
             break;
         }
     }while(opcion!=4);
