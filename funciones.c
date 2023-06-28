@@ -104,12 +104,12 @@ void ImprimirFactura(struct mascota ListaMascota[], struct servicio ListaServici
 
     printf("-----------FACTURA------------\n");
     printf("Datos del cliente\n");
-    printf("%d %c\n",ListaMascota[posicionMascota].dueño, ListaMascota[posicionMascota].identificacion);
+    printf("%s %d\n",ListaMascota[posicionMascota].dueño, ListaMascota[posicionMascota].identificacion);
     printf("Servicios a facturar\n");
     for (int l = 0; l < cantidadServicios; l++){
         printf("%s %s %f\n",Seleccionado[l].nombre, Seleccionado[l].descripcion, Seleccionado[l].precio);
     }
-    printf("Total: %.2f",precioFinal);
+    printf("Total: %.2f\n",precioFinal);
     
     
 }
