@@ -5,6 +5,7 @@
 
 int ingresarOpcion(){
     int opcion;
+    printf("------------------------------------\n");
     printf("\tServicio de Vaterinaria\n");
     printf("1. Ingreso de la mascota\n");
     printf("2. Servicios\n");
