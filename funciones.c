@@ -15,26 +15,26 @@ int ingresarOpcion(){
     return opcion;
 }
 
-void IngresarMascota(struct mascota *NuevaMascota){
+void IngresarMascota(int *id, char *nombre, char *tipo, int *edad, char *dueño){
     fflush(stdin);
     printf("Ingrese el ID de su mascota: ");
-    scanf("%d", &(*NuevaMascota).identificacion);
+    scanf("%d", id);
     
     fflush(stdin);
     printf("Ingrese el nombre de su mascota: ");
-    scanf("%[^\n]",(*NuevaMascota).nombre);
+    scanf("%[^\n]", nombre);
     
     fflush(stdin);
     printf("Ingrese la raza de su mascota: ");
-    scanf("%[^\n]",(*NuevaMascota).tipo);
+    scanf("%[^\n]", tipo);
 
     fflush(stdin);
     printf("Ingrese la edad de su mascota: ");
-    scanf("%d",&(*NuevaMascota).edad);
+    scanf("%d", edad);
 
     fflush(stdin);
     printf("Ingrese el nombre del dueño: ");
-    scanf("%[^\n]",(*NuevaMascota).dueño);
+    scanf("%[^\n]", dueño);
 }
 
 void IngresarServicio(struct servicio *NuevoServicio){
@@ -55,7 +55,7 @@ void IngresarServicio(struct servicio *NuevoServicio){
     scanf("%f",&(*NuevoServicio).precio);
 }
 
-void ImprimirFactura(struct mascota ListaMascota[], struct servicio ListaServicio[]){
+void ImprimirFactura(int identificacion[10], char nombre[10][50], char tipo[10][50], int edad[10], char dueño[10][50], struct servicio ListaServicio[]){
     int k,f, posicionMascota=-1;
     char sn;
     int cantidadServicios=0;
@@ -66,7 +66,7 @@ void ImprimirFactura(struct mascota ListaMascota[], struct servicio ListaServici
         printf("Ingrese la identificación de su mascota para la factura: ");
         scanf("%d",&k);
         for (int j = 0; j < 10; j++){
-            if (ListaMascota[j].identificacion==k){
+            if (identificacion[j]==k){
                 posicionMascota=j;
             }
         }
@@ -104,7 +104,7 @@ void ImprimirFactura(struct mascota ListaMascota[], struct servicio ListaServici
 
     printf("-----------FACTURA------------\n");
     printf("Datos del cliente\n");
-    printf("%s %d\n",ListaMascota[posicionMascota].dueño, ListaMascota[posicionMascota].identificacion);
+    printf("%s %d\n", dueño[posicionMascota], identificacion[posicionMascota]);
     printf("Servicios a facturar\n");
     for (int l = 0; l < cantidadServicios; l++){
         printf("%s %s %f\n",Seleccionado[l].nombre, Seleccionado[l].descripcion, Seleccionado[l].precio);

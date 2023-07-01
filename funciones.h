@@ -1,11 +1,3 @@
-struct mascota{
-    int identificacion;
-    char nombre[20];
-    char tipo[20];
-    int edad;
-    char dueño[50];
-};
-
 struct servicio{
     int identificacion;
     char nombre[20];
@@ -14,6 +6,6 @@ struct servicio{
 };
 
 int ingresarOpcion();
-void IngresarMascota(struct mascota  *NuevaMascota);
+void IngresarMascota(int *id, char *nombre, char *tipo, int *edad, char *dueño);
 void IngresarServicio(struct servicio *NuevoServicio);
-void ImprimirFactura(struct mascota ListaMascota[], struct servicio ListaServicio[]);
+void ImprimirFactura(int identificacion[10], char nombre[10][50], char tipo[10][50], int edad[10], char dueño[10][50], struct servicio ListaServicio[]);

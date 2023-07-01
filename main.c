@@ -3,7 +3,11 @@
 #include "funciones.h"
 
 int main (int argc, char *argv[]) {
-    struct mascota ListaMascota[10];
+    int identificacion[10];
+    char nombre[10][50];
+    char tipo[10][50];
+    int edad[10];
+    char dueño[10][50];
     struct servicio ListaServicio[10];
     int cont=0;
     int cont2=0;
@@ -13,7 +17,7 @@ int main (int argc, char *argv[]) {
         switch (opcion){
         case 1:
             if (cont<10){
-                IngresarMascota(&ListaMascota[cont]);
+                IngresarMascota(&identificacion[cont], &nombre[cont][0], &tipo[cont][0], &edad[cont], &dueño[cont][0]);
             }else{
                 printf("Nustro sistema esta completo.\n");
             }
@@ -30,7 +34,7 @@ int main (int argc, char *argv[]) {
             break;
 
         case 3:
-            ImprimirFactura(ListaMascota, ListaServicio);
+            ImprimirFactura(identificacion, nombre, tipo, edad, dueño, ListaServicio);
             break;
 
         case 4:
