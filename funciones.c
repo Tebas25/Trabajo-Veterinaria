@@ -102,14 +102,20 @@ void ImprimirFactura(int identificacion[10], char nombre[10][50], char tipo[10][
         precioFinal=precioFinal+Seleccionado[t].precio;
     }
         
+    FILE *factura;
+    factura=fopen("factura.txt","w");
 
-    printf("-----------FACTURA------------\n");
-    printf("Datos del cliente\n");
-    printf("%s %d\n", dueño[posicionMascota], identificacion[posicionMascota]);
-    printf("Servicios a facturar\n");
+    fprintf(factura,"----------------FACTURA------------------\n");
+    fprintf(factura,"Datos del cliente\n");
+    fprintf(factura,"Nombre: \t\t\t\tIdentificación:\n");
+    fprintf(factura,"\n");
+    fprintf(factura,"%s \t\t%d\n", dueño[posicionMascota], identificacion[posicionMascota]);
+    fprintf(factura,"Servicios elegidos:\n");
     for (int l = 0; l < cantidadServicios; l++){
-        printf("%s %s %f\n",Seleccionado[l].nombre, Seleccionado[l].descripcion, Seleccionado[l].precio);
+        fprintf(factura,"%s \t%s\t %.2f\n",Seleccionado[l].nombre, Seleccionado[l].descripcion, Seleccionado[l].precio);
     }
-    printf("Total: %.2f\n",precioFinal);
-    printf("--------------------------------------\n");
+    fprintf(factura,"Total: %.2f\n",precioFinal);
+    fprintf(factura,"--------------------------------------------\n");
+    
+    fclose(factura);
 }
