@@ -108,8 +108,8 @@ void ImprimirFactura(int identificacion[10], char nombre[10][50], char tipo[10][
     fprintf(factura,"----------------FACTURA------------------\n");
     fprintf(factura,"Datos del cliente\n");
     fprintf(factura,"Nombre: \t\t\t\tIdentificación:\n");
-    fprintf(factura,"\n");
     fprintf(factura,"%s \t\t%d\n", dueño[posicionMascota], identificacion[posicionMascota]);
+    fprintf(factura,"\n");
     fprintf(factura,"Servicios elegidos:\n");
     for (int l = 0; l < cantidadServicios; l++){
         fprintf(factura,"%s \t%s\t %.2f\n",Seleccionado[l].nombre, Seleccionado[l].descripcion, Seleccionado[l].precio);
