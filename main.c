@@ -38,7 +38,7 @@ int main (int argc, char *argv[]) {
             break;
 
         case 4:
-            modificarMascota(&identificacion[10],&nombre[10][50],&tipo[10][50],&edad[10],&dueño[10][50]);
+            modificarMascota(identificacion,nombre,tipo,edad,dueño);
             break;
         case 5:
             printf("Fin del programa\n");

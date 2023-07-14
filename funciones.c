@@ -134,7 +134,7 @@ void ImprimirFactura(int identificacion[10], char nombre[10][50], char tipo[10][
     fclose(factura);
 }
 
-void modificarMascota(int *identificacion[10],char *nombre[10][50],char *tipo[10][50],int *edad[10],char *dueño[10][50]){
+void modificarMascota(int identificacion[10],char nombre[10][50],char tipo[10][50],int edad[10],char dueño[10][50]){
     int opcion;
     int ID;
     int seleccionado=-1;
@@ -144,42 +144,51 @@ void modificarMascota(int *identificacion[10],char *nombre[10][50],char *tipo[10
         printf("Ingrese la identificacion de la mascota a modificar: ");
         scanf("%d",&ID);
         fflush(stdin);
-        for (int i = 0; i < ID; i++){
+
+        for (int i = 0; i < 10; i++){
             if (ID==identificacion[i]){
                 seleccionado=i;
-            }else{
+                break;
+            }
+            if (seleccionado==-1)
+            {
                 printf("Mascota no encontrada");
             }
+   
         }
     }while(seleccionado==-1);
-    printf("Ingrese el servicio que desea modificar:\n1. Nombre de la mascota.\n2. Tipo\n3. Nombre dueño\n4. Edad");
-    scanf("%d",opcion);
 
-    switch (opcion)
-    {
+    printf("Ingrese el servicio que desea modificar:\n1. Nombre de la mascota.\n2. Tipo\n3. Nombre dueño\n4. Edad\n");
+    scanf("%d",&opcion);
+    fflush(stdin);
+
+    switch (opcion){
     case 1:
         
         printf("Ingrese el nuevo nombre de la mascota: ");
-        scanf("%s",nuevonombre[0]);
-        strcpy(nuevonombre[0],*nombre[seleccionado][0]);
+        fflush(stdin);
+        scanf("%[^\n]",nuevonombre);
+        strcpy(nombre[seleccionado],nuevonombre);
         break;
     
     case 2:
         printf("Ingrese el nuevo tipo: ");
-        scanf("%s",&nuevotipo[0]);
-        strcpy(nuevotipo[0],*tipo[seleccionado][0]);
+        fflush(stdin);
+        scanf("%[^\n]",nuevotipo);
+        strcpy(tipo[seleccionado],nuevotipo);
         break;
 
     case 3:
         printf("Ingrese el nuevo nombre del dueño: ");
-        scanf("%s",nuevodueño[0]);
-        strcpy(nuevodueño[0],*dueño[seleccionado][0]);
+        fflush(stdin);
+        scanf("%[^\n]",nuevodueño);
+        strcpy(dueño[seleccionado],nuevodueño);
         break;
     
     case 4:
         printf("Ingrese la nueva edad: ");
-        scanf("%d",nuevaedad);
-        *edad[seleccionado]=nuevaedad;
+        scanf("%d",&nuevaedad);
+        edad[seleccionado]=nuevaedad;
         break;
 
     default:
