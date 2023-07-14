@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "funciones.h"
+#include <string.h>
 
 int main (int argc, char *argv[]) {
     int identificacion[10];
@@ -37,6 +38,9 @@ int main (int argc, char *argv[]) {
             break;
 
         case 4:
+            modificarMascota(&identificacion[10],&nombre[10][50],&tipo[10][50],&edad[10],&dueño[10][50]);
+            break;
+        case 5:
             printf("Fin del programa\n");
             break;
         
@@ -44,7 +48,7 @@ int main (int argc, char *argv[]) {
             printf("Opción no válida. Ingrese otra opción\n\n");
             break;
         }
-    }while(opcion!=4);
+    }while(opcion!=5);
     return 0;
 }
 

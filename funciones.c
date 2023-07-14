@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "funciones.h"
+#include <string.h>
 
 
 
@@ -10,7 +11,8 @@ int ingresarOpcion(){
     printf("1. Ingreso de la mascota\n");
     printf("2. Servicios\n");
     printf("3. Facturar servicios\n");
-    printf("4. Salir\n");
+    printf("4. Modificas mascota\n");
+    printf("5. Salir\n");
     printf("Ingrese una opcion: ");
     scanf("%d",&opcion);
     return opcion;
@@ -130,4 +132,58 @@ void ImprimirFactura(int identificacion[10], char nombre[10][50], char tipo[10][
     fprintf(factura,"--------------------------------------------\n");
     
     fclose(factura);
+}
+
+void modificarMascota(int *identificacion[10],char *nombre[10][50],char *tipo[10][50],int *edad[10],char *dueño[10][50]){
+    int opcion;
+    int ID;
+    int seleccionado=-1;
+    int nuevaid, nuevaedad;
+    char nuevonombre[50], nuevotipo[50], nuevodueño[50];
+    do{
+        printf("Ingrese la identificacion de la mascota a modificar: ");
+        scanf("%d",&ID);
+        fflush(stdin);
+        for (int i = 0; i < ID; i++){
+            if (ID==identificacion[i]){
+                seleccionado=i;
+            }else{
+                printf("Mascota no encontrada");
+            }
+        }
+    }while(seleccionado==-1);
+    printf("Ingrese el servicio que desea modificar:\n1. Nombre de la mascota.\n2. Tipo\n3. Nombre dueño\n4. Edad");
+    scanf("%d",opcion);
+
+    switch (opcion)
+    {
+    case 1:
+        
+        printf("Ingrese el nuevo nombre de la mascota: ");
+        scanf("%s",nuevonombre[0]);
+        strcpy(nuevonombre[0],*nombre[seleccionado][0]);
+        break;
+    
+    case 2:
+        printf("Ingrese el nuevo tipo: ");
+        scanf("%s",&nuevotipo[0]);
+        strcpy(nuevotipo[0],*tipo[seleccionado][0]);
+        break;
+
+    case 3:
+        printf("Ingrese el nuevo nombre del dueño: ");
+        scanf("%s",nuevodueño[0]);
+        strcpy(nuevodueño[0],*dueño[seleccionado][0]);
+        break;
+    
+    case 4:
+        printf("Ingrese la nueva edad: ");
+        scanf("%d",nuevaedad);
+        *edad[seleccionado]=nuevaedad;
+        break;
+
+    default:
+        printf("Opcion no valida");
+        break;
+    }
 }
