@@ -107,7 +107,7 @@ void ImprimirFactura(int identificacion[10], char nombre[10][50], char tipo[10][
 
     fprintf(factura,"----------------FACTURA------------------\n");
     fprintf(factura,"Datos del cliente\n");
-    fprintf(factura,"Nombre: \t\t\t\tIdentificación:\t\t Nombre mascota:\n");
+    fprintf(factura,"Nombre: \t\tIdentificación:\t\t Nombre mascota:\n");
     fprintf(factura,"%s \t\t%d\t\t %s\n", dueño[posicionMascota], identificacion[posicionMascota],nombre[posicionMascota]);
     fprintf(factura,"\n");
     fprintf(factura,"Servicios elegidos:\n");
